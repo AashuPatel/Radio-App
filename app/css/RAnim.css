@@ -1,0 +1,132 @@
+.RAnim{
+    /* background-color: rgba(0, 255, 255, 0.058); */
+    width: 98%;
+    height: 98%;
+    position: relative;
+}
+
+.RAnimTitle{
+    position: sticky;
+    top: 0px;
+    height: 65px;
+    margin: 0px;
+    /* background-color: rgb(37, 37, 37); */
+    padding: 10px;
+    border-radius: 5px;
+    padding-bottom: 0px;
+    padding-left: 55px;
+    z-index: 1;
+    border-bottom-right-radius:0px ;
+    border-bottom-left-radius:0px ;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(37, 37, 37);;
+}
+.RAnimList{
+    height: 92vh;
+    min-height: 450px;
+    border-radius: 10px;
+    width: 23vw;
+    min-width: 300px;
+    margin-bottom: 10px;
+    background-color: rgba(37, 37, 37, 0.786);
+    position: absolute;
+    right: 10px;
+    overflow: auto;
+    display: none;
+}
+
+.RAnimList ul li {
+    width: 95%;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 12px 0;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 12px;
+    margin-top: 20px;
+    padding: 13px;
+    align-items: center;
+    color: white;
+    gap: 0px;
+}
+
+.channel-item{
+  width: 95%;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 12px 0;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin: 12px;
+  margin-top: 20px;
+  padding: 13px;
+  align-items: center;
+  color: white;
+  gap: 0px;
+  
+  border: 2px solid rgb(206, 237, 236);
+  border-radius: 5px;
+  background: linear-gradient(145deg, #7d7d7d, #404040);
+  box-shadow:  5px 5px 500px #686868,
+            -5px -5px 500px #272626;
+}
+
+.info{
+    padding: 0px;
+    gap: 0px;
+    line-height: 1.2;
+}
+
+.leftBtm ul li img{
+    width: 35px;
+}
+
+.playnow{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.playnow img{
+    width: 15px;
+    height: 25px;
+}
+
+
+
+  
+  .falling-div {
+    position: absolute;
+    top: 8px;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    animation: fall linear;
+    background: #e0e0e0;
+    box-shadow:  1px 1px 7px #b1b1b1,
+                -1px -1px 7px #ffffff;
+
+    cursor: pointer;
+    
+  }
+  
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0); /* Start position */
+    }
+    100% {
+      transform: translateY(96vh); /* Fall past the container */
+    }
+  }
+  
+

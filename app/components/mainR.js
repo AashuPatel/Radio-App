@@ -1,0 +1,220 @@
+"use client"
+import React from 'react'
+import Script from 'next/script';
+import '../css/mainR.css'
+import { useState, useRef, useEffect,useContext } from 'react';
+import { stateContext } from '../context/stateContext';
+const MainR = () => {
+  const stateNames = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Delhi", "Jammu & Kashmir", "Ladakh", "Puducherry"];
+
+  const value = useContext(stateContext)
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const timerRef = useRef(null);
+
+
+
+  // setInterval(() => {
+  //   if (value.audioRef.current && !value.audioRef.current.paused) {
+  //     setElapsedTime((prev) => prev + 1);
+  //   }
+  // }, 1000);
+
+  useEffect(() => {
+    
+      timerRef.current = setInterval(() => {
+        if (value.audioRef.current && !value.audioRef.current.paused) {
+          setElapsedTime((prev) => prev + 1);
+        }
+      }, 1000);
+    }, []);
+
+
+  useEffect(() => {
+    console.log(value.selectedState)
+  }, [value.selectedState]);
+
+  const stateListRef = useRef(null);
+
+  const handleStateVisible = () => {
+    if (stateListRef.current) {
+      stateListRef.current.style.display = 'flex';
+      stateListRef.current.style.flexWrap = 'wrap';
+    }
+  };
+
+  const handleStateHidden = () => {
+    if (stateListRef.current) {
+      stateListRef.current.style.display = 'none';
+    }
+  };
+
+  const formatTime = (seconds) => {
+    const hrs = Math.floor(seconds / 3600).toString().padStart(2, '0');
+    const mins = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+    const secs = (seconds % 60).toString().padStart(2, '0');
+    return `${hrs} : ${mins} : ${secs}`;
+  };
+
+  return (
+    <div className='mainR'>
+        <div className="mainHead">
+
+
+        </div>
+
+        <div className="mainLocn">
+          <div className="mainLocnUp">
+            We have covered whole country
+          </div>
+
+          <div className="mainLocnDwn">
+            <div className="mainLocnDwnL">
+            You are from
+            </div> 
+
+            <div className="mainLocnDwnR">
+              <div className="chooseLocn"
+                onMouseEnter={handleStateVisible}
+               
+              >
+                <Script
+                  src="https://cdn.lordicon.com/lordicon.js"
+                  strategy="lazyOnload"
+                />
+                <lord-icon
+                  src="https://cdn.lordicon.com/onmwuuox.json"
+                  trigger="hover"
+                  colors="primary:#121331,secondary:#1663c7"
+                  style={{ width: "50px", height: "50px" }}
+                  className ="invert">
+                </lord-icon>
+                <div className="chooseState">
+                  Select your State
+                </div>
+              </div>
+              <div 
+                ref={stateListRef} 
+                className="stateList"
+                onMouseLeave={handleStateHidden}
+              >
+              {stateNames.map((Sname, index) => (
+                <div
+                  key={index}
+                  className={`stateDiv ${
+                    value.selectedState === Sname ? "selectedS" : ""
+                  }`}
+                  onClick={() =>{
+                    value.setSelectedState(Sname)
+                    setTimeout(() => {
+                      handleStateHidden();
+                    }, 7000);
+                  }}
+                >
+                  {Sname}
+                </div>
+              ))}
+            </div>
+
+
+            </div>
+          </div>
+
+        </div>
+        <div className="mainPlay">
+          <div className="mainRplaybar">
+
+            <div className="mainRtop">
+
+
+              <div className='mainRlineT'></div>
+
+            </div>
+            <div className="mainRbottom">
+              <div className="mainRleft">
+                <div className="mainRmInfo">
+                  <div className="mainRblackBox">
+                    <div className="mainRbBoxUp">
+                      <span className='mainRlive'>Live</span>
+                      <span className='mainRhd' style={{ color: "white", padding: "5px" }}>Radio</span>
+
+                    </div>
+
+                    <div className="mainRbBoxDown">
+                      <div className="mainRfreq">
+                        {`${value.selectedChannel.frequency} - 128bit`}
+                      </div>
+                      <div className="mainRtime">
+                        {formatTime(elapsedTime)}
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div className="mainRdesc">
+                    <div className="mainRbBoxUp">
+                      <span className='mainRsongName'>{value.selectedChannel.name}</span>
+
+
+                    </div>
+
+                    <div className="mainRbBoxDown">
+
+                      <span className="mainRplaying">
+                        Playing..
+                      </span>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div className="mainRnavB">
+
+                </div>
+
+              </div>
+              <div className="mainRright">
+                <div className="mainRmPlayer">
+
+                  <div className="mainRbigCircle">
+                    <button 
+                      className="mainRsmallCircle"
+                      onClick={() => value.audioRef.current.play()}
+                    >
+                     <img src="playAnimated.svg" alt="" />
+
+                    </button>
+                  </div>
+
+                </div>
+                <div className="mainRplyps">
+                  <button  className="mainRupCircle" onClick={() => value.audioRef.current.pause()}>
+                    
+                  {/* onClick={() => { audioRef.current.pause() }} */}
+                    <div className="mainRpause"
+                      
+                    >
+
+                    </div>
+
+                  </button>
+
+                  <button className="mainRdownCircle">
+                    <div className="mainRrec"></div>
+
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      
+    </div>
+  )
+}
+
+export default MainR

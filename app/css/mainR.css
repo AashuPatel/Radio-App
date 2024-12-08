@@ -1,0 +1,367 @@
+.mainR{
+    width: 45vw;
+    position: relative;
+    min-width: 700px;
+    height: 98vh;
+    min-height: 580px;
+    /* background-color: wheat; */
+    margin-left: 20px;
+}
+
+.mainHead{
+    height: 100px;
+    /* background-color: white; */
+    width: 700px;
+}
+
+.mainLocn{
+    height: 200px;
+    /* background-color: rgb(153, 156, 155); */
+    width: 700px;
+    color: white;
+}
+
+.mainLocnUp{
+    width: 700px;
+    height: 50px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.mainLocnDwn{
+    width: 700px;
+    height: 150px;
+    font-size: 60px;
+    font-weight: bold;
+    display: flex;
+    
+}
+.mainLocnDwnL{
+    padding: 0px;
+    width: 380px;
+    height: 110px;
+    font-size: 60px;
+    font-weight: bold;
+    transform: scaleY(2.2);
+    
+    color: rgb(237, 236, 206);
+    /* background-color: aqua; */
+    display: flex;
+    align-items: flex-end;
+}
+
+.mainLocnDwnR{
+    width: 300px;
+    height: 150px;
+    font-size: 60px;
+    font-weight: bold;
+    position: relative;
+    /* background-color: rgb(25, 111, 111); */
+}
+
+.chooseLocn{
+    /* background-color: #7c7c7c; */
+    width: 250px;
+    height: 120px;
+    border-radius: 10px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    
+}
+
+.chooseState{
+    font-size: 25px;
+    padding: 5px;
+    color: rgb(255, 228, 141);
+    border: 2px solid rgb(237, 236, 206);
+    border-radius: 5px;
+    background: linear-gradient(145deg, #9d9d9d, #404040);
+    box-shadow:  5px 5px 300px #9d9d9d,
+             -5px -5px 100px #797979;
+}
+
+
+
+.stateList{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.688);
+    right: 0px;
+    margin-top: 5px;
+    height: 250px;
+    width: 550px;
+    z-index: 1;
+    border-radius: 10px;
+    border: 1px solid white;
+    display: none;
+    padding-bottom: 5px;
+}
+
+
+.stateDiv{
+    background-color: white;
+    height: 25px;
+    width: 125px;
+    color: black;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    border: 1px solid rgb(177, 235, 250);
+    cursor: pointer;
+}
+
+
+
+
+.mainPlay{
+    position: absolute;
+    bottom: 20px;
+    height: 320px;
+    /* background-color: aqua; */
+    width: 700px;
+}
+
+
+.mainRplaybar{
+    background-color: rgb(255, 255, 255);
+
+    width: 660px;
+    height: 300px;
+
+    border: 5px solid black;
+    border-radius: 40px;
+    box-shadow:  10px 10px 20px #7c7c7c,
+                -20px -20px 10px #222222;
+}
+
+.mainRlineT{
+    display: flex;
+    justify-self: center;
+    margin-top: 50px;
+    height: 1px;
+    width: 600px;
+    transform: scaleY(0.5);
+    background-color: rgb(182, 176, 176);
+}
+
+.mainRbottom{
+    position: relative;
+    display: flex;
+}
+
+.mainRleft{
+    position: relative;
+    width: 350px;
+}
+
+.mainRmInfo{
+    display: flex;
+    position: relative;
+    margin-top: 35px;
+    margin-left: 30px;
+    border-radius: 20px;
+    background-color: rgb(241, 242, 243);
+    height: 130px;
+    width: 350px;
+}
+
+.mainRblackBox{
+
+    position: absolute;
+    border-radius: 20px;
+    background-color: rgb(0, 0, 0);
+    height: 130px;
+    width: 180px;   
+    
+}
+
+.mainRnavB{
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 30px;
+    border-radius: 10px;
+    background-color: rgb(241, 242, 243);
+    height: 40px;
+    width: 350px;    
+}
+
+.mainRright{
+    display: flex;
+    position: absolute;
+    right: 0px;
+    width: 200px;
+    margin-right: 40px;
+}
+
+.mainRmPlayer{
+    display: flex;
+    width: 150px;
+    height: 250px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+.mainRbigCircle {
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    border: 1px solid rgb(130, 129, 129); 
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: inset rgb(17, 16, 16) 0 0 20px -10px;
+}
+
+.mainRsmallCircle{    
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid rgb(130, 130, 130);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.mainRsmallCircle img{
+    width: 65px;
+    height: 65px;
+}
+
+.mainRplyps{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 50px;
+    height: 250px;
+
+}
+
+.mainRupCircle{
+    position: absolute;
+    display: flex;
+    top: 30px;
+    justify-content: center;
+    align-items: center;    
+    background-color: aliceblue;
+    border: 1px solid rgb(130, 129, 129);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-shadow: inset rgb(0, 0, 0) 0px 0px 10px -5px;
+   
+}
+.mainRdownCircle{
+    position: absolute;
+    display: flex;
+    bottom: 30px;
+    justify-content: center;
+    align-items: center;    
+    background-color: aliceblue;
+    border: 1px solid rgb(130, 129, 129);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-shadow: inset rgb(0, 0, 0) 0px 0px 10px -5px;
+   
+}
+
+.mainRpause{
+    height: 11px;
+    width: 11px;
+    background-color: black;
+}
+.mainRrec{
+    height: 11px;
+    width: 11px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+}
+
+.mainRbBoxUp{
+    height: 40px;
+    width: 180px; 
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.mainRlive{
+    font-weight: bold;
+    background-color: aliceblue;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    color: black;
+}
+
+.mainRbBoxDown{
+    height: 90px;
+    position: relative;
+    color: white;
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+}
+
+.mainRfreq {
+    position: relative;
+    height: 50px;
+    font-size: 13px;
+    padding-left: 10px;
+    line-height: 1;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 3px;
+}
+.mainRtime{
+    position: relative;
+    height: 40px;
+    font-size: 30px;
+    padding-left: 10px;
+    line-height: 1;
+
+}
+
+.mainRdesc{
+    position: absolute;
+    padding-left: 8px;
+    right: 0px;
+    border-radius: 20px;
+    height: 130px;
+    width: 180px;  
+}
+
+.mainRsongName{
+    height: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+
+.mainRplaying{
+    height: 100px;
+    color: rgb(175, 177, 177);
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    font-size: 32px;
+    font-weight: 600;
+    padding-left: 10px;
+    padding-bottom: 11px;
+
+}

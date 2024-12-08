@@ -1,101 +1,226 @@
+"use client"
 import Image from "next/image";
-
+import "./css/maincss.css";
+import { useState, useEffect, useRef } from "react";
+import MainR from "./components/mainR";
+import { stateContext } from "./context/stateContext";
+import Hls from 'hls.js';
+import RAnim from "./components/rAmin";
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const [channels, setChannels] = useState([]);
+  const [selectedState, setSelectedState] = useState("");
+  const [filteredChannels, setFilteredChannels] = useState(channels);
+  const [audioSrc, setAudioSrc] = useState(null);
+  const [selectedChannel, setSelectedChannel] = useState([]);
+  const audioRef = useRef(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    // Fetching channel data from the API
+    const fetchChannels = async () => {
+      try {
+        const response = await fetch("http://localhost:3006/fetchChannels"); // Update with your API endpoint
+        const data = await response.json();
+        setChannels(data);
+      } catch (error) {
+        console.error("Error fetching channels:", error);
+      }
+    };
+
+    fetchChannels();
+  }, []);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.load();
+    }
+  }, []);
+  
+  useEffect(() => {
+    console.log('Channels data:', channels);
+    console.log('Selected state:', selectedState);
+    console.log('filtered channels:', filteredChannels);
+  }, [channels, selectedState]);
+  
+
+  useEffect(() => {
+    let filtered = channels.filter((channel) => channel.state === selectedState);
+    setFilteredChannels(filtered);
+  }, [selectedState, channels]);
+  
+  
+  const playChannel = async (m3u8Link) => {
+    if (m3u8Link.endsWith('.m3u8')){
+      
+        try {
+          // Ensure the audioRef is set
+          if (!audioRef.current) {
+            console.warn("Audio element is not set. Creating dynamically...");
+            
+            // Dynamically create an audio element and assign it to the ref
+            const audioElement = document.createElement("audio");
+            audioElement.style.display = "none"; // Optional, for design purposes
+            document.body.appendChild(audioElement); // Attach to the DOM
+            audioRef.current = audioElement;
+          }
+      
+          // Check if HLS is supported
+          if (Hls.isSupported()) {
+            // Cleanup any previous HLS instance
+            if (audioRef.current.hlsInstance) {
+              audioRef.current.hlsInstance.destroy();
+              audioRef.current.hlsInstance = null;
+            }
+      
+            // Initialize HLS
+            const hls = new Hls();
+            hls.loadSource(m3u8Link);
+            hls.attachMedia(audioRef.current);
+      
+            // Wait for the manifest to be parsed
+            await new Promise((resolve, reject) => {
+              hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                console.log("Manifest parsed. Ready to play.");
+                resolve();
+              });
+      
+              hls.on(Hls.Events.ERROR, (_, data) => {
+                if (data.fatal) {
+                  console.error("Fatal HLS error:", data);
+                  reject(data);
+                }
+              });
+            });
+      
+            // Store the HLS instance on the audio element for cleanup
+            audioRef.current.hlsInstance = hls;
+      
+            // Attempt to play the audio
+            await audioRef.current.play();
+            console.log("Playback started successfully.");
+          } else {
+            console.error("HLS is not supported in this browser.");
+          }
+        } catch (error) {
+          console.error("Error during playback:", error);
+        }
+    }else {
+      console.log("Playing a non-m3u8 link.");
+    
+      // If an audio element exists, remove it and create a new one
+      if (audioRef.current) {
+        console.log("Existing audio element found. Removing and creating a new one...");
+        audioRef.current.pause(); // Pause the current audio
+        audioRef.current.src = ''; // Clear the source
+        audioRef.current.load(); // Free up memory
+        audioRef.current.parentNode.removeChild(audioRef.current); // Remove from DOM
+      }
+    
+      // Create a new audio element and set it to the ref
+      const audioElement = document.createElement("audio");
+      audioElement.style.display = "none"; // Optional, for design purposes
+      document.body.appendChild(audioElement); // Attach to the DOM
+      audioRef.current = audioElement;
+    
+      // Set the source and play the audio
+      audioRef.current.src = m3u8Link;
+      try {
+        await audioRef.current.play();
+        console.log("Playback started successfully.");
+      } catch (error) {
+        console.error("Error during playback:", error);
+      }
+    }
+  };    
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = ''; // Free up memory by resetting the src
+        audioRef.current.load();
+      }
+    };
+  }, []);
+  
+  
+
+
+
+  return (
+    <>
+    <stateContext.Provider value={{channels, playChannel ,setSelectedChannel, setChannels , selectedState , setSelectedState, audioRef, selectedChannel}}> 
+      <div className="rdofront">
+        <div className="left">
+          <div className="leftUp">
+          <div className="home bg-grey m1 p1 rounded">
+                <div className="logo  items-center flex">
+                    <img src="logo1.png" alt="logo"/>
+                    <h1>Aashu's</h1>
+                    <img src="cross.svg" alt="" className="cross invert"/>
+                </div>
+                <ul>
+                    <li><img src="home.svg" alt="home" className="invert"/> Home</li>
+                    <li><img src="search.svg" alt="library" className="invert"/> Search</li>
+                </ul>
+            </div>
+
+          </div>
+
+          <div className="leftBtm">
+
+            <div className="availableChannels">
+              Available Channels
+            </div>
+
+            <ul>
+                {(filteredChannels.length === 0 ? channels : filteredChannels).map((channel, index) => (
+                  <li key={index}
+                  onClick={()=>{
+                    const m3u8Link = channel.description;
+                    setSelectedChannel(channel);
+                    playChannel(m3u8Link);
+                  }}
+                  >
+                    <img src="music.svg" alt="" className="invert" />
+                    <div className="info">
+                      <div style={{ fontWeight: "bold", fontSize: "20px" }}>
+                        {channel.name} {/* Channel name from API */}
+                      </div>
+                      <div className="artist">{channel.frequency}</div> {/* Frequency from API */}
+                    </div>
+                    <div className="playnow">
+                      <span>Play Now</span>
+                      <img src="play1.svg" alt="" className="invert" />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+          </div>
+
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <div className="right">
+          <MainR />
+          <RAnim/>
+          <div className="audioP">
+            {audioSrc && (
+              <audio ref={audioRef} controls style={{display:"none"}}>
+                Your browser does not support the audio element.
+              </audio>
+            )}
+          </div>
+
+          <div>
+            <video ref={videoRef} style={{ display: "none" }}>
+              Your browser does not support the video element.
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </stateContext.Provider>
+    </>
   );
 }
