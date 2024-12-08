@@ -20,7 +20,7 @@ export default function Home() {
     // Fetching channel data from the API
     const fetchChannels = async () => {
       try {
-        const response = await fetch("http://localhost:3006/fetchChannels"); // Update with your API endpoint
+        const response = await fetch("https://radio-app-server.onrender.com/fetchChannels"); // Update with your API endpoint
         const data = await response.json();
         setChannels(data);
       } catch (error) {
