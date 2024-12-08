@@ -2,6 +2,7 @@
 import React from 'react'
 import Script from 'next/script';
 import '../css/mainR.css'
+import Image from 'next/image';
 import { useState, useRef, useEffect,useContext } from 'react';
 import { stateContext } from '../context/stateContext';
 const MainR = () => {
@@ -180,7 +181,7 @@ const MainR = () => {
                       className="mainRsmallCircle"
                       onClick={() => value.audioRef.current.play()}
                     >
-                     <img src="playAnimated.svg" alt="" />
+                     <Image src="playAnimated.svg" alt="" />
 
                     </button>
                   </div>

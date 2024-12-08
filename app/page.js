@@ -155,13 +155,13 @@ export default function Home() {
           <div className="leftUp">
           <div className="home bg-grey m1 p1 rounded">
                 <div className="logo  items-center flex">
-                    <img src="logo1.png" alt="logo"/>
+                    <Image src="logo1.png" alt="logo"/>
                     <h1>Aashu's</h1>
-                    <img src="cross.svg" alt="" className="cross invert"/>
+                    <Image src="cross.svg" alt="" className="cross invert"/>
                 </div>
                 <ul>
-                    <li><img src="home.svg" alt="home" className="invert"/> Home</li>
-                    <li><img src="search.svg" alt="library" className="invert"/> Search</li>
+                    <li><Image src="home.svg" alt="home" className="invert"/> Home</li>
+                    <li><Image src="search.svg" alt="library" className="invert"/> Search</li>
                 </ul>
             </div>
 
@@ -182,7 +182,7 @@ export default function Home() {
                     playChannel(m3u8Link);
                   }}
                   >
-                    <img src="music.svg" alt="" className="invert" />
+                    <Image src="music.svg" alt="" className="invert" />
                     <div className="info">
                       <div style={{ fontWeight: "bold", fontSize: "20px" }}>
                         {channel.name} {/* Channel name from API */}
@@ -191,7 +191,7 @@ export default function Home() {
                     </div>
                     <div className="playnow">
                       <span>Play Now</span>
-                      <img src="play1.svg" alt="" className="invert" />
+                      <Image src="play1.svg" alt="" className="invert" />
                     </div>
                   </li>
                 ))}
