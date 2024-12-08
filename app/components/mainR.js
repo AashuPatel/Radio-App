@@ -161,7 +161,7 @@ const MainR = () => {
                     <div className="mainRbBoxDown">
 
                       <span className="mainRplaying">
-                        Playing..
+                      Playing...
                       </span>
                     </div>
 
@@ -181,7 +181,7 @@ const MainR = () => {
                       className="mainRsmallCircle"
                       onClick={() => value.audioRef.current.play()}
                     >
-                     <Image src="playAnimated.svg" alt="" />
+                     <Image width={40} height={40} src="playAnimated.svg" alt="" />
 
                     </button>
                   </div>
