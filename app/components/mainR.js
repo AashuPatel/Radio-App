@@ -26,7 +26,7 @@ const MainR = () => {
           setElapsedTime((prev) => prev + 1);
         }
       }, 1000);
-    }, []);
+    }, [value.audioRef]);
 
 
   useEffect(() => {
