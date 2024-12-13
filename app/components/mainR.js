@@ -119,7 +119,9 @@ const MainR = () => {
                     value.selectedState === Sname ? "selectedS" : ""
                   }`}
                   onClick={() =>{
-                    value.setSelectedState(Sname)
+                    value.setSelectedState(Sname);                   
+                    value.leftSide.current.style.left= '0%';
+                    value.leftSide.current.style.zIndex= '1';                    
                     setTimeout(() => {
                       handleStateHidden();
                     }, 7000);
