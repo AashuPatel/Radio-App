@@ -68,8 +68,8 @@ const MainR = () => {
           </button>
 
           <div className="mainRAllchbtn" onClick={()=>{
-            document.getElementsByClassName('RAnim')[0].style.right= '0px';
-            document.getElementsByClassName('RAnim')[0].style.zIndex= '1';
+            // document.getElementsByClassName('RAnim')[0].style.right= '0px';
+            // document.getElementsByClassName('RAnim')[0].style.zIndex= '1';
           }}>
             All Channels
           </div>

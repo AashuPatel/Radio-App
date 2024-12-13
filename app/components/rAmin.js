@@ -96,12 +96,12 @@ const RAnim = () => {
   return (
     <div className="RAnim" ref={rAnimRef}>
       <div className="RAnimTitle">
-        <button className='crseAnim' onClick={()=>{
+        {/* <button className='crseAnim' onClick={()=>{
                 document.getElementsByClassName('RAnim')[0].style.right = '-100%';
                 document.getElementsByClassName('RAnim')[0].style.zINDEX = '0';
               }}>
               <Image width={46} height={46} src="/cross1.svg" alt="" className="invert"/>
-        </button>
+        </button> */}
         All Channels:</div>
       <div className="RAnimList">
         <ul>
