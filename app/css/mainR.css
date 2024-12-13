@@ -379,13 +379,28 @@
     position: absolute;
     border: 1px solid white;
     padding: 5px;
-    border-radius: 5px;
-    width: 100px;
-    font-size: 15px;
+    border-radius: 10px;
+    width: 190px;
+    font-size: 22px;
     right: 50px;
     display: none;
     cursor: pointer;
 }
+
+.a1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    padding: 5px;
+}
+
+.a11{
+    padding-top: 12px;
+}
+
+
 
 
 

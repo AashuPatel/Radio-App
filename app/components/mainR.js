@@ -71,7 +71,11 @@ const MainR = () => {
             // document.getElementsByClassName('RAnim')[0].style.right= '0px';
             // document.getElementsByClassName('RAnim')[0].style.zIndex= '1';
           }}>
-            All Channels
+            <div className="a1">
+
+             <span className='a11'>Live Radio</span> <Image width={40} height={40} src="radio.svg" alt="" className='invert'/>
+
+            </div>
           </div>
 
 
