@@ -9,6 +9,8 @@
 }
 
 .mainHead{
+    display: flex;
+    align-items: center;
     height: 100px;
     /* background-color: white; */
     width: 700px;
@@ -366,9 +368,7 @@
 
 }
 
-.hamburger{
-    margin-top: 20px;
-}
+
 
 .hamburger img{
     width: 60px;
