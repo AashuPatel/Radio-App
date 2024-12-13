@@ -22,6 +22,7 @@ body {
 
 /* General Scrollbar Styling */
 body {
+  background-color: black;
   scrollbar-width: thin; /* Firefox: Narrow scrollbar */
   scrollbar-color: black transparent; /* Firefox: Black scrollbar on transparent background */
 }

@@ -187,10 +187,14 @@
         justify-content: center;
     } */
 
-    .mainR{
-        width: 100%;
-    }
     
+    
+}
+
+@media (max-width:600px){
+    .right{
+        background-color: black;
+    }
 }
 
 
