@@ -365,3 +365,39 @@
     padding-bottom: 11px;
 
 }
+
+.hamburger{
+    margin-top: 20px;
+}
+
+.hamburger img{
+    width: 60px;
+    height: 60px;
+}
+
+.mainRAllchbtn{
+    position: absolute;
+    border: 1px solid white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100px;
+    font-size: 15px;
+    right: 50px;
+    display: block;
+    cursor: pointer;
+}
+
+
+
+@media (min-width : 1000px){
+    .hamburger{
+        display: none;
+    }
+}
+
+@media (max-width : 1200px){
+    .mainRAllchbtn{
+        display: block;
+    }
+
+}

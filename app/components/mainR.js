@@ -5,6 +5,7 @@ import '../css/mainR.css'
 import Image from 'next/image';
 import { useState, useRef, useEffect,useContext } from 'react';
 import { stateContext } from '../context/stateContext';
+import RAnim from './rAmin';
 const MainR = () => {
   const stateNames = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Delhi", "Jammu & Kashmir", "Ladakh", "Puducherry"];
 
@@ -59,6 +60,19 @@ const MainR = () => {
   return (
     <div className='mainR'>
         <div className="mainHead">
+          <button onClick={()=>{
+            value.leftSide.current.style.left= '0%';
+            value.leftSide.current.style.zIndex= '1';
+          }}>
+            <Image width={36} height={36} src="hamburger.svg" alt="" className="hamburger invert"/>
+          </button>
+
+          <div className="mainRAllchbtn" onClick={()=>{
+            document.getElementsByClassName('RAnim')[0].style.right= '0px';
+            document.getElementsByClassName('RAnim')[0].style.zIndex= '1';
+          }}>
+            All Channels
+          </div>
 
 
         </div>
@@ -121,6 +135,11 @@ const MainR = () => {
           </div>
 
         </div>
+
+        {/* <div className="mainRAllch">
+          <RAnim/>
+        </div> */}
+
         <div className="mainPlay">
           <div className="mainRplaybar">
 

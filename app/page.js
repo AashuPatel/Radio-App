@@ -15,6 +15,7 @@ export default function Home() {
   const [selectedChannel, setSelectedChannel] = useState([]);
   const audioRef = useRef(null);
   const videoRef = useRef(null);
+  const leftSide = useRef(null);
 
   useEffect(() => {
     // Fetching channel data from the API
@@ -149,15 +150,20 @@ export default function Home() {
 
   return (
     <>
-    <stateContext.Provider value={{channels, playChannel ,setSelectedChannel, setChannels , selectedState , setSelectedState, audioRef, selectedChannel}}> 
+    <stateContext.Provider value={{channels, leftSide, playChannel ,setSelectedChannel, setChannels , selectedState , setSelectedState, audioRef, selectedChannel}}> 
       <div className="rdofront">
-        <div className="left">
+        <div className="left" ref={leftSide}>
           <div className="leftUp">
           <div className="home bg-grey m1 p1 rounded">
                 <div className="logo  items-center flex">
                     <Image width={46} height={46} src="/logo1.png" alt="logo"/>
                     <h1>Aashu&apos;s</h1>
-                    <Image width={46} height={46} src="/cross.svg" alt="" className="cross invert"/>
+                    <button onClick={()=>{
+                      document.getElementsByClassName('left')[0].style.left = '-100%';
+                      document.getElementsByClassName('left')[0].style.zINDEX = '0';
+                    }}>
+                      <Image width={46} height={46} src="/cross.svg" alt="" className="cross invert"/>
+                    </button>
                 </div>
                 <ul>
                     <li><Image width={46} height={46} src="/home.svg" alt="home" className="invert"/> Home</li>
@@ -203,7 +209,9 @@ export default function Home() {
 
         <div className="right">
           <MainR />
+
           <RAnim/>
+          
           <div className="audioP">
             {audioSrc && (
               <audio ref={audioRef} controls style={{display:"none"}}>

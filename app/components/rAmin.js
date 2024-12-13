@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { useEffect, useContext, useRef } from 'react';
 import '../css/RAnim.css';
 import { stateContext } from '../context/stateContext';
@@ -94,7 +95,14 @@ const RAnim = () => {
 
   return (
     <div className="RAnim" ref={rAnimRef}>
-      <div className="RAnimTitle">All Channels:</div>
+      <div className="RAnimTitle">
+        <button className='crseAnim' onClick={()=>{
+                document.getElementsByClassName('RAnim')[0].style.right = '-100%';
+                document.getElementsByClassName('RAnim')[0].style.zINDEX = '0';
+              }}>
+              <Image width={46} height={46} src="/cross1.svg" alt="" className="invert"/>
+        </button>
+        All Channels:</div>
       <div className="RAnimList">
         <ul>
           {allCh.map((channell, indexx) => (
