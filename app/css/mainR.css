@@ -370,7 +370,7 @@
 
 
 
-.hamburger img{
+.hamburger Image{
     width: 60px;
     height: 60px;
 }
@@ -393,7 +393,7 @@
     align-items: center;
     gap: 10px;
     color: white;
-    padding: 5px;
+    padding: 0px;
 }
 
 .a11{
