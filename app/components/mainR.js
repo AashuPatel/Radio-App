@@ -230,8 +230,9 @@ const MainR = () => {
                       <lord-icon
                           src="https://cdn.lordicon.com/mfblariy.json"
                           trigger="hover"
+                          stroke="bold"
                           colors="primary:#ffffe6,secondary:#000000"
-                          style={{ width: '15px', height: '15px' }}>
+                          style={{ width: '20px', height: '20px' }}>
                       </lord-icon>
                     {/* <div className="mainRrec"></div> */}
 
