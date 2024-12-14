@@ -403,7 +403,7 @@
 
 .mainRAllch{
     display: none;
-    height: 400px;
+    height: 20vh;
 }
 
 
@@ -413,23 +413,27 @@
     }
 }
 
-@media (max-width : 1200px){
+@media (max-width : 550px){
     .mainRAllchbtn{
         display: block;
     }
+
+
     .mainRAllch{
         display: flex;
+
     }
     .RAnimTitle{
         background-color: black;
         border: 1px solid white;
         display: flex;
         align-items: center;
-        /* justify-content: center; */
+        
     }
-    /* .RAnimList{
+    .RAnimList{
         background-color: black;
-    } */
+        height: 20vh;
+    }
 
 }
 
@@ -525,7 +529,7 @@
         margin-top: 2.5px;
         height: 125px;
         width: 275px;
-        z-index: 1;
+        z-index: 3;
         border-radius: 5px;
         border: 0.5px solid white;
         display: none;
@@ -712,6 +716,7 @@
     .mainRsongName{
         height: 15px;
         font-size: 9px;
+        display: block;
     }
     
     .mainRplaying{
