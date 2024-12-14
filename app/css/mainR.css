@@ -435,7 +435,7 @@
         align-items: center;
         height: 50px;
         width: 350px;
-        margin-top: 20px;
+        margin-top: 5px;
     }
     
     .mainLocn {
@@ -536,7 +536,7 @@
 
     .mainPlay{
         display: flex;
-        bottom: 30px;
+        bottom: 20px;
         height: 160px;
         width: 100%;
         justify-content: center;
