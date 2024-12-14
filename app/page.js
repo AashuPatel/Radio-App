@@ -209,8 +209,9 @@ export default function Home() {
 
         <div className="right">
           <MainR />
-
-          <RAnim/>
+          <div className="RanimRanim">
+            <RAnim/>
+          </div>
           
           <div className="audioP">
             {audioSrc && (

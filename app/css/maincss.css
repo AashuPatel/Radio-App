@@ -151,6 +151,12 @@
     height: 25px;
 }
 
+.RanimRanim{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 
 @media (max-width: 1000px){
     .left{
@@ -177,7 +183,7 @@
 
 @media (max-width : 1200px){
 
-    .RAnim{
+    .RanimRanim{
         display: none;
         /* position: fixed;
         min-width: 50px;

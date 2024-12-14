@@ -142,9 +142,9 @@ const MainR = () => {
 
         </div>
 
-        {/* <div className="mainRAllch">
+        <div className="mainRAllch">
           <RAnim/>
-        </div> */}
+        </div>
 
         <div className="mainPlay">
           <div className="mainRplaybar">

@@ -401,7 +401,10 @@
 }
 
 
-
+.mainRAllch{
+    display: none;
+    height: 400px;
+}
 
 
 @media (min-width : 1000px){
@@ -414,6 +417,19 @@
     .mainRAllchbtn{
         display: block;
     }
+    .mainRAllch{
+        display: flex;
+    }
+    .RAnimTitle{
+        background-color: black;
+        border: 1px solid white;
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+    }
+    /* .RAnimList{
+        background-color: black;
+    } */
 
 }
 
