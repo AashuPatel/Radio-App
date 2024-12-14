@@ -109,6 +109,9 @@
     font-size: 20px;
     font-weight: bold;
 }
+.leftBtm ul{
+    margin-right: 7px;
+}
 
 .leftBtm ul li {
     width: 95%;
@@ -116,10 +119,10 @@
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-    padding: 12px 0;
+    padding: 10px 0;
     border: 1px solid white;
     border-radius: 5px;
-    margin: 12px;
+    margin: 8px;
     margin-top: 20px;
     padding: 13px;
     align-items: center;
