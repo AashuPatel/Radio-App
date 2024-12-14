@@ -130,7 +130,7 @@
     
   }
   
-
+  
   @keyframes fall {
     0% {
       transform: translateY(0); /* Start position */
@@ -140,4 +140,29 @@
     }
   }
   
-
+  
+  
+    @media (max-width : 550px){
+  
+      .RAnimTitle{
+          background-color: black;
+          border: 1px solid white;
+          display: flex;
+          align-items: center;
+          
+      }
+      .RAnimList{
+          background-color: black;
+          height: 20vh;
+      }
+  
+      @keyframes fall {
+        0% {
+          transform: translateY(0); /* Start position */
+        }
+        100% {
+          transform: translateY(56vh); /* Fall past the container */
+        }
+      }
+  
+  }
