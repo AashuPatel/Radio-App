@@ -144,13 +144,19 @@
   
     @media (max-width : 550px){
   
-      .RAnimTitle{
-          background-color: black;
-          border: 1px solid white;
-          display: flex;
-          align-items: center;
-          
-      }
+      .RAnimTitle {
+        background-color: black;
+        border-top: none; /* Remove other borders */
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid white; /* Add bottom border */
+        display: flex;
+        align-items: center;
+    
+        /* Inner shadow with linear decrease */
+        box-shadow: inset 0px -20px 50px -5px rgba(255, 255, 255, 0.5);
+    }
+    
       .RAnimList{
           background-color: black;
           height: 20vh;
