@@ -224,8 +224,16 @@ const MainR = () => {
 
                   </button>
 
-                  <button className="mainRdownCircle">
-                    <div className="mainRrec"></div>
+                  <button onClick={()=>{
+                    window.location.reload(true);
+                  }} className="mainRdownCircle">
+                      <lord-icon
+                          src="https://cdn.lordicon.com/mfblariy.json"
+                          trigger="hover"
+                          colors="primary:#ffffe6,secondary:#000000"
+                          style={{ width: '15px', height: '15px' }}>
+                      </lord-icon>
+                    {/* <div className="mainRrec"></div> */}
 
                   </button>
 
