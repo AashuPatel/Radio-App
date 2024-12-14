@@ -425,7 +425,7 @@
         width: 100vw;
         position: relative;
         min-width: 350px;
-        height: 98vh;
+        height: 95vh;
         min-height: 290px;
         margin-left: 10px;
     }
@@ -536,7 +536,7 @@
 
     .mainPlay{
         display: flex;
-        bottom: 40px;
+        bottom: 10px;
         height: 160px;
         width: 100%;
         justify-content: center;
