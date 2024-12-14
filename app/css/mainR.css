@@ -535,17 +535,19 @@
     
 
     .mainPlay{
-
+        display: flex;
         bottom: 40px;
         height: 160px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-left: -10px;
 
-        width: 350px;
     }
     
     
     .mainRplaybar{
-
-    
+        
         width: 330px;
         height: 150px;
         border-radius: 25px;
@@ -702,6 +704,23 @@
         padding-bottom: 6px;
     
     }
+
+    .mainRAllchbtn {
+        padding: 2.5px;
+        border-radius: 5px;
+        width: 145px;
+        font-size: 18px;
+        right: 25px;
+    }
+    
+    .a1 {
+        gap: 5px;
+    }
+    
+    .a11 {
+        padding-top: 6px;
+    }
+    
     
 
 }
