@@ -149,7 +149,7 @@
         border-top: none; /* Remove other borders */
         border-left: none;
         border-right: none;
-        border-bottom: 1px solid white; /* Add bottom border */
+        border-bottom: 1px solid rgb(0, 0, 0); /* Add bottom border */
         display: flex;
         align-items: center;
     
