@@ -413,15 +413,25 @@
     }
 }
 
-@media (max-width : 550px){
+@media (max-width : 950px){
     .mainRAllchbtn{
         display: block;
     }
 
+    @media (min-height: 750px){
 
-    .mainRAllch{
-        display: flex;
+        .mainRAllch{
+            display: flex;
+    
+        }
+    }
 
+    @media (max-width: 550px){
+
+        .mainRAllch{
+            display: flex;
+    
+        }
     }
     .RAnimTitle{
         background-color: black;
@@ -433,6 +443,10 @@
     .RAnimList{
         background-color: black;
         height: 20vh;
+    }
+    
+    .stateList{
+        z-index: 3;
     }
 
 }
