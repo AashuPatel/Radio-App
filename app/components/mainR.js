@@ -6,6 +6,9 @@ import Image from 'next/image';
 import { useState, useRef, useEffect,useContext } from 'react';
 import { stateContext } from '../context/stateContext';
 import RAnim from './rAmin';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.info("Backend may take a minute to respond on first hit", { autoClose: 60000 });
 const MainR = () => {
   const stateNames = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Delhi", "Jammu & Kashmir", "Ladakh", "Puducherry"];
 
@@ -59,6 +62,7 @@ const MainR = () => {
 
   return (
     <div className='mainR'>
+      <ToastContainer />
         <div className="mainHead">
           <button onClick={()=>{
             value.leftSide.current.style.left= '0%';
