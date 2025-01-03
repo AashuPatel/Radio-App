@@ -15,6 +15,15 @@ const MainR = () => {
   const value = useContext(stateContext)
   const [elapsedTime, setElapsedTime] = useState(0);
   const timerRef = useRef(null);
+  const [chk , setChk] = useState(0);
+
+  useEffect(() => {
+    if (chk === 0) {
+      toast.info("Backend may take a minute to respond on first hit", { autoClose: 60000 });
+      setChk(1);
+    }
+  }, [chk]);
+  
 
 
 
@@ -61,8 +70,8 @@ const MainR = () => {
   };
 
   return (
-    <div className='mainR'>
-      <ToastContainer />
+    <div className='mainR'>    
+      <ToastContainer />  
         <div className="mainHead">
           <button onClick={()=>{
             value.leftSide.current.style.left= '0%';
